@@ -24,6 +24,23 @@ body {
 .svg path{
   fill: #5D2A42;
 }
+.svg {
+  cursor: pointer;
+  transition: 0.3s
+}
+.svg:hover {
+  scale: 1.5;
+  rotate: 12deg;
+  transition: 0.5s;
+}
+
+.svg:active {
+  scale: 1.2;
+}
+
+.svg:visited {
+  rotate: 100deg;
+}
 
 ul {
   text-align: center;
@@ -38,6 +55,7 @@ li {
 
 .main-container{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-left: 120px;
@@ -46,4 +64,3 @@ li {
   font-family: 'Poppins', 'Montserrat', sans-serif;
   color:#5D2A42; 
 }
-

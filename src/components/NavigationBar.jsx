@@ -1,8 +1,6 @@
-import { ReactComponent as HomeIcon } from '../icons/Home.svg';
-import { ReactComponent as FileIcon } from '../icons/File.svg';
-import { ReactComponent as UFileIcon } from '../icons/Upload File.svg';
-import { ReactComponent as UserIcon } from '../icons/8-account.svg';
-
+import FileIcon from './FileIcon';
+import HomeIcon from './HomeIcon';
+import UFileIcon from './UFileIcon';
 
 export default function Navigation() {
   
@@ -10,13 +8,13 @@ export default function Navigation() {
     <div className="nav">
       <ul>
           <li>
-            <HomeIcon className="svg"/>
+            <HomeIcon />
           </li>
           <li>
-            <FileIcon className="svg"/>
+            <FileIcon />
           </li>
           <li>
-            <UFileIcon className="svg"/>
+            <UFileIcon />
           </li>
       </ul>
     </div>

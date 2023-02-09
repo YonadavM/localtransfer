@@ -1,13 +1,37 @@
+import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
+
 export default function MainScreen() {
-    const OpeningText = "1. Connect the other device/s to the same network as the server.\n2. Go to http://<Server Ip>:3000\n3. Start Transfer"
-        // this text will modified later...
-    return (
-        <div className="main-container">
-            <pre>
-                <h1>
-                    {OpeningText}
-                </h1>
-            </pre>
-        </div>
-    )
+    const [serverIp, setServerIp] = useState(null);
+    const socket = io('http://localhost:3001');
+
+  useEffect(() => {
+    socket.on('recive-ip-addr', (ip) => {
+      setServerIp(ip);
+    });
+  }, []);
+
+  return (
+    <div className="main-container">
+      {serverIp ? (
+        <pre>
+          <h1>
+            1. Connect the other device/s to the same network as the server.
+            <br />
+            2. Go to http://{serverIp}:3000
+            <br />
+            3. Start Transfer
+          </h1>
+        </pre>
+      ) : (
+        <h1>
+        1. Connect the other device/s to the same network as the server.
+        <br />
+        2. Go to http://{"<server ip>"}:3000
+        <br />
+        3. Start Transfer
+        </h1>
+      )}
+    </div>
+  );
 }
