@@ -30,22 +30,37 @@ export default function TextState(props) {
         wrapper.append(editor)
         const q = new Quill(editor, {theme: "snow", modules: {toolbar: TOOLBAR_OPTIONS}})
         setQuill(q);
+        console.log("strange ", q)
     }, [])
 
-    useEffect ( () => {
-        if (props.socket == null || quill == null) return;
-
+    useEffect(() => {
+        if (quill == null || props.socket == null) return;
         const textChangeHandler = (delta, oldDelta, source) => {
             if (source !== 'user') return;
-            props.socket.emit('send-text-changes', delta) 
+            console.log(delta)
+            props.socket.emit('send-text-changes', delta)
         };
-
+        
         quill.on('text-change', textChangeHandler);
-
-        return () => {
+        
+        return () => {    
             quill.off('text-change', textChangeHandler);
         }
-    }, [])
+    }, [quill, props.socket])
+
+    useEffect(() => {
+        if (quill == null) return;
+        const textChangeHandler = (delta) => {
+            quill.updateContents(delta)
+        };
+        
+        props.socket.on('receive-text-changes', textChangeHandler);
+        
+        return () => {    
+            props.socket.off('receive-text-changes', textChangeHandler);
+        }
+    }, [quill, props.socket])
+    
     
     return (
         <div id="text-editor-contianer" ref={wrapperRef}></div>

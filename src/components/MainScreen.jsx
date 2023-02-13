@@ -18,7 +18,7 @@ export default function MainScreen(props) {
                 <OpeningState socket={socket}/>
             ) : (
                 props.screenState === 1 ? (
-                    <TextState/>
+                    <TextState socket={socket}/>
                 ) : (
                     props.screenState === 2 ? (
                         <FileState />
