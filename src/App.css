@@ -38,10 +38,6 @@ body {
   scale: 1.2;
 }
 
-.svg:visited {
-  rotate: 100deg;
-}
-
 ul {
   text-align: center;
   list-style-type: none;

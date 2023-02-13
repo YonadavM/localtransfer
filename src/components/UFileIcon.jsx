@@ -1,15 +1,12 @@
 import { ReactComponent as UFileSVG } from '../icons/Upload File.svg';
 import { useEffect, useRef } from 'react';
 
-export default function HomeIcon() {
-
-    console.log("Enter")
-
+export default function UFileIcon(props) {
     const ref = useRef(null);
 
     useEffect(() => {
         const handleClick = event => {
-        console.log('UFile Clicked');
+            props.setScreenState(2)
         };
         ref.current.addEventListener('click', handleClick);
         return () => {
