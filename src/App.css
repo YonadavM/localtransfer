@@ -60,3 +60,20 @@ li {
   font-family: 'Poppins', 'Montserrat', sans-serif;
   color:#5D2A42; 
 }
+.ql-toolbar.ql-snow{
+  margin-top: 2vh;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top:0;
+  z-index: 1;
+}
+#text-editor-contianer .ql-editor {
+  box-sizing: border-box;
+  width: 90vw;
+  min-height: 90vh;
+  height: 90%;
+  background-color: white;
+}
