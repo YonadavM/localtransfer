@@ -49,7 +49,7 @@ export default function TextState(props) {
     }, [quill, props.socket])
 
     useEffect(() => {
-        if (quill == null) return;
+        if (quill == null || props.socket == null) return;
         const textChangeHandler = (delta) => {
             quill.updateContents(delta)
         };

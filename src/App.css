@@ -77,3 +77,20 @@ li {
   height: 90%;
   background-color: white;
 }
+
+.file-input-container {
+  width: 600px;
+  height: 300px;
+  border: 2px dashed #5D2A42;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 5vh;
+  cursor: pointer;
+  transition: 0.3s
+}
+
+.file-input-container:hover {
+  scale: 1.1;
+  transition: 0.5s;
+}

@@ -5,7 +5,7 @@ import TextState from './TextState';
 import FileState from './FileState';
 
 export default function MainScreen(props) {
-    const socket = io('http://192.168.1.122:3001');
+    const socket = io('http://192.168.1.122:5000');
     
     useEffect(() => {
         console.log(props.screenState)
@@ -21,7 +21,7 @@ export default function MainScreen(props) {
                     <TextState socket={socket}/>
                 ) : (
                     props.screenState === 2 ? (
-                        <FileState />
+                        <FileState socket={socket}/>
                     ) : (
                         props.setScreenState(0)
                         )
