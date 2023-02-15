@@ -13,22 +13,20 @@ export default function OpeningState(props) {
     return (
         <>
         {serverIp ? (
-            <pre>
-              <h1>
-                1. Connect the other device/s to the same network as the server.
-                <br />
-                2. Go to http://{serverIp}:3000
-                <br />
-                3. Start Transfer
-              </h1>
-            </pre>
+            <h1>
+              1. Connect the other device/s to the same network as the server.
+              <br />
+              2. Go to http://{serverIp}:3000
+              <br />
+              3. Start Transfer
+            </h1>
           ) : (
             <h1>
-            1. Connect the other device/s to the same network as the server.
-            <br />
-            2. Go to http://{"<server ip>"}:3000
-            <br />
-            3. Start Transfer
+              1. Connect the other device/s to the same network as the server.
+              <br />
+              2. Go to http://{"<server ip>"}:3000
+              <br />
+              3. Start Transfer
             </h1>
         )}
         </>
