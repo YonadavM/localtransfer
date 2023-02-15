@@ -42,6 +42,22 @@ export default function FileState(props) {
     reader.readAsDataURL(file);
   };
 
+  // Listen for incoming files
+  useEffect(() => {
+    props.socket.on('recive-file', (data) => {
+      console.log(`Received file ${data.filename}`);
+      // Decode the file data and create a Blob object
+      const decodedFileData = atob(data.file);
+      const fileBlob = new Blob([decodedFileData], { type: 'application/octet-stream' });
+      // Create a link element and add it to the file list
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(fileBlob);
+      link.download = data.filename;
+      link.textContent = data.filename;
+      link.click();
+    });
+  }, []);
+
   return (
     <div
       onDrop={handleFileDrop}
