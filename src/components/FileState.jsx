@@ -44,18 +44,26 @@ export default function FileState(props) {
 
   // Listen for incoming files
   useEffect(() => {
-    props.socket.on('recive-file', (data) => {
+    const reciveFileHandler = (data) => {
       console.log(`Received file ${data.filename}`);
       // Decode the file data and create a Blob object
       const decodedFileData = atob(data.file);
       const fileBlob = new Blob([decodedFileData], { type: 'application/octet-stream' });
       // Create a link element and add it to the file list
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(fileBlob);
-      link.download = data.filename;
-      link.textContent = data.filename;
-      link.click();
-    });
+      let toDownload = false
+      toDownload = window.confirm(`You've recived ${data.filename} from another user\nDownload the file?`);
+      if (toDownload) {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(fileBlob);
+        link.download = data.filename;
+        link.textContent = data.filename;
+        link.click();
+      }
+    };
+    props.socket.on('recive-file', reciveFileHandler);
+    return (() => {
+        props.socket.off('recive-file', reciveFileHandler)
+    })
   }, []);
 
   return (
