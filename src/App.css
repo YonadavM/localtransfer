@@ -1,20 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+:root {
+  --light: #E6E2C3;
+  --mid: #1ea290  ;
+  --icons: #007b6a;
+  --dark: #1C315E; 
+}
+
 body {
-  background-color: #FFF9EC;
+  background-color: var(--light);
 }
 
 .App{
   display: flex;
-  background-color: #FFF9EC;
+  background-color: var(--light);
   /* align-items: center;
   justify-content: center; */
 }
 
 .nav {
   display: block;
-  border-right: 3px solid #FCB1A6;
-  width: 100px;
+  border-right: 3px solid var(--mid);
+  width: 90px;
   height: 100vh;
   box-shadow: 0px 0px 60px -35px ;
   position: absolute;
@@ -22,7 +29,7 @@ body {
   top: 0;
 }
 .svg path{
-  fill: #5D2A42;
+  fill: var(--icons);
 }
 .svg {
   cursor: pointer;
@@ -58,7 +65,7 @@ li {
   width: 100%;
   height: 100%;
   font-family: 'Poppins', 'Montserrat', sans-serif;
-  color:#5D2A42; 
+  color:var(--dark); 
 }
 .ql-toolbar.ql-snow{
   margin-top: 2vh;
@@ -69,28 +76,60 @@ li {
   vertical-align: middle;
   top:0;
   z-index: 1;
+  width: 67.5vw;
 }
 #text-editor-contianer .ql-editor {
   box-sizing: border-box;
-  width: 90vw;
-  min-height: 90vh;
-  height: 90%;
+  width: 67vw;
+  border-color: #1C315E;
+  min-height: 70vh;
   background-color: white;
 }
 
 .file-input-container {
-  width: 600px;
-  height: 300px;
-  border: 2px dashed #5D2A42;
-  display: flex;
-  justify-content: center;
+  display: block;
+  width: 50vw;
+  height: 30vh;
+  border: 2px dashed var(--dark);
+  vertical-align: middle;
   text-align: center;
   margin: 5vh;
-  cursor: pointer;
-  transition: 0.3s
+  cursor: pointer;  
+  transition: 0.1s;
+}
+.file-input-container:hover {
+    border: none;
+    scale: 1.1;
+    transition: 0.5s;
+    background: 
+        linear-gradient(90deg, #333 50%, transparent 0) repeat-x,
+        linear-gradient(90deg, #333 50%, transparent 0) repeat-x,
+        linear-gradient(0deg, #333 50%, transparent 0) repeat-y,
+        linear-gradient(0deg, #333 50%, transparent 0) repeat-y;
+    background-size: 9px 1.5px, 9px 1.5px, 1.5px 9px, 1.5px 9px;
+    background-position: 0 0, 0 100%, 0 0, 100% 0;
+    animation: linearGradientMove .1s infinite linear;
+  }
+  @keyframes linearGradientMove {
+    100% {
+        background-position: 9px 0, -9px 100%, 0 -9px, 100% 9px;
+    }
 }
 
-.file-input-container:hover {
-  scale: 1.1;
-  transition: 0.5s;
+@media (min-width: 1250px) {
+  .ql-toolbar.ql-snow{
+    width: 100%;
+  }
+  #text-editor-contianer .ql-editor {
+    width: 90vw;
+    min-height: 90vh;
+  }
+  .nav {
+    width: 100px;
+    height: 100%;
+  }
+  .file-input-container {
+    width: 60vw;
+    height: 55vh;
+  }
 }
