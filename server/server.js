@@ -20,5 +20,11 @@ const io = require('socket.io')(5000, {
     origin: ['http://localhost:3000', 'http://localhost:3001']
   }
 })
+
 io.on('connection', socket => {
   socket.emit('recive-ip-addr', wifiAddress)
+
+  socket.on('send-text-changes', (delta) => {
+    console.log(delta);
+    socket.broadcast.emit('receive-text-changes', delta)
+  });
