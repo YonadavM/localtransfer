@@ -28,3 +28,13 @@ io.on('connection', socket => {
     console.log(delta);
     socket.broadcast.emit('receive-text-changes', delta)
   });
+  socket.on('send-file', (data) => {
+    console.log(`Received file ${data.filename} from client ${socket.id}`);
+
+    // Broadcast the file data to all connected clients
+    socket.broadcast.emit('recive-file', { filename: data.filename, file: data.file });
+  });
+  socket.on("connect_error", (err) => {
+    console.log(`connect_error due to ${err.message}`);
+  });
+});
