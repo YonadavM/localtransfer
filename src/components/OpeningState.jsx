@@ -7,6 +7,7 @@ export default function OpeningState(props) {
     useEffect(() => {
         props.socket.on('recive-ip-addr', (ip) => {
         setServerIp(ip);
+        console.log(ip)
         });
     }, []);
 
@@ -16,7 +17,7 @@ export default function OpeningState(props) {
             <h1>
               1. Connect the other device/s to the same network as the server.
               <br />
-              2. Go to http://{serverIp}:3000
+              2. Go to http://{serverIp}:3001
               <br />
               3. Start Transfer
             </h1>
@@ -24,7 +25,7 @@ export default function OpeningState(props) {
             <h1>
               1. Connect the other device/s to the same network as the server.
               <br />
-              2. Go to http://{"<server ip>"}:3000
+              2. Go to http://{"<server ip>"}:3001
               <br />
               3. Start Transfer
             </h1>
